@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Cue</title>
+    <link>https://coursion-studio.github.io/cue/appcast.xml</link>
+    <description>Updates for Cue — a native macOS terminal from Coursion.</description>
+    <language>en</language>
+  </channel>
+</rss>
