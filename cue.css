@@ -244,6 +244,27 @@ code:not([class]) {
 .cta-icon { display: block; width: 72px; height: 72px; margin: 0 auto 18px; filter: drop-shadow(0 10px 24px rgb(199 92 235 / 0.35)); }
 footer a { text-decoration: none; }
 
+picture { display: block; }
+.sec-head .aside { margin-top: 14px; font-size: 15.5px; color: var(--text-tertiary); }
+
+.qt-stack { width: min(960px, 100%); margin: 0 auto; }
+.qt-stack .qt { position: relative; z-index: 1; width: 100%; }
+.qt-stack .qt img { border-radius: 0 0 14px 14px; }
+.qt-stack .pal { position: relative; z-index: 2; width: 62%; margin: -2% 5% 0 auto; }
+
+.shot-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; width: min(1080px, 100%); margin: 0 auto; }
+.shot-pair figcaption { margin-top: 14px; font-size: 14.5px; line-height: 1.5; color: var(--text-tertiary); text-align: center; }
+.shot-pair figcaption b { color: var(--text-primary); font-weight: 650; }
+
+.share-head { margin: 0 auto 48px !important; }
+.share-strip { display: flex; justify-content: center; align-items: flex-start; gap: 0; margin: 0 auto; }
+.share-card { flex: 0 1 340px; min-width: 0; margin: 0 -14px; }
+.share-card img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 24px 60px rgb(0 0 0 / 0.5); }
+.share-card:nth-child(1) picture { transform: rotate(-5deg) translateY(26px); }
+.share-card:nth-child(2) { position: relative; z-index: 1; }
+.share-card:nth-child(3) picture { transform: rotate(5deg) translateY(26px); }
+.share-note { margin: 56px 0 0; text-align: center; font-size: 13.5px; color: var(--text-tertiary); }
+
 @media (max-width: 980px) {
   .split-stage { width: 100%; }
   #features .feature-grid { --cols: 2; }
@@ -265,6 +286,10 @@ footer a { text-decoration: none; }
   .cmp-menu li b { min-width: 68px; font-size: 12px; }
   .theme-pair .back, .theme-pair .front { width: 86%; }
   .theme-pair .front { top: 16%; }
+  .qt-stack .pal { width: 88%; margin: -4% 0 0 auto; }
+  .shot-pair { grid-template-columns: 1fr; gap: 36px; }
+  .share-card { margin: 0 -10px; }
+  .share-card:nth-child(1) picture, .share-card:nth-child(3) picture { transform: rotate(0) translateY(18px) scale(0.92); }
 }
 @media (prefers-reduced-motion: reduce) {
   .card, .term, .term-cards, .cmp { transition: opacity 0.2s ease; }

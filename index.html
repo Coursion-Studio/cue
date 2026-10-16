@@ -4,17 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cue — A terminal that doesn't feel like one</title>
-  <meta name="description" content="Cue is a free, native macOS terminal with a real input bar, every command as a card, and your own Claude one keystroke away." />
+  <meta name="description" content="Cue is a free, native macOS terminal: a real input bar, every command as a card, a ⌘K palette, a Quick Terminal from anywhere, project tasks and git, and your own Claude one keystroke away." />
   <link rel="canonical" href="https://coursion-studio.github.io/cue/" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
-  <link rel="stylesheet" href="cue.css?v=05050bbbe6" />
+  <link rel="stylesheet" href="cue.css?v=6a0fa5dab1" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cue" />
   <meta property="og:url" content="https://coursion-studio.github.io/cue/" />
   <meta property="og:title" content="Cue — A terminal that doesn't feel like one" />
-  <meta property="og:description" content="A free, native macOS terminal: a real input bar, every command as a card, and your own Claude one keystroke away." />
+  <meta property="og:description" content="A free, native macOS terminal: a real input bar, every command as a card, a ⌘K palette, a Quick Terminal from anywhere, project tasks, and your own Claude one keystroke away." />
   <meta property="og:image" content="https://coursion-studio.github.io/cue/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -28,7 +28,8 @@
     "url": "https://coursion-studio.github.io/cue/",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "macOS 15 or later",
-    "description": "A free, native macOS terminal with a composer, command cards and your own Claude.",
+    "description": "A free, native macOS terminal with a composer, command cards, a command palette, a Quick Terminal, project awareness and your own Claude.",
+    "softwareVersion": "0.4.0",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "Coursion Studio", "url": "https://coursion.studio" }
   }
@@ -60,6 +61,9 @@
     <g id="i-key"><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5M16.5 6.5l2.5 2.5M14.5 8.5l2 2"/></g>
     <g id="i-shield"><path d="M12 3 19.5 6v5.4c0 4.4-3.1 8.4-7.5 9.6-4.4-1.2-7.5-5.2-7.5-9.6V6z"/><path d="m9 12 2 2 4-4"/></g>
     <g id="i-direct"><path d="M4 12h13"/><path d="m13 7 5 5-5 5"/><path d="M20.5 5v14"/></g>
+    <g id="i-cmdk"><path d="M9 9V7a2 2 0 1 0-2 2h10a2 2 0 1 0-2-2v10a2 2 0 1 0 2-2H7a2 2 0 1 0 2 2V9z"/></g>
+    <g id="i-drop"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 12h17"/><path d="m7 7.2 2 1.4-2 1.4M11 9.8h3"/></g>
+    <g id="i-project"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></g>
     <g id="i-copy"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></g>
   </defs></svg>
 
@@ -75,18 +79,20 @@
         </div>
       </nav>
 
-      <div class="fan" role="img" aria-label="The Cue icon with its composer, command cards, AI, themes and split panes fanned out beneath it.">
+      <div class="fan" role="img" aria-label="The Cue icon with its composer, command cards, command palette, Quick Terminal, projects, AI and themes fanned out beneath it.">
         <img class="fan-icon" src="icon.png" alt="" width="160" height="160" fetchpriority="high" />
         <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-composer"/></svg></span><b>Composer</b></span>
         <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-cards"/></svg></span><b>Cards</b></span>
+        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-cmdk"/></svg></span><b>Palette</b></span>
+        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><b>Quick Terminal</b></span>
+        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-project"/></svg></span><b>Projects</b></span>
         <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><b>Your Claude</b></span>
         <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><b>Themes</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-split"/></svg></span><b>Splits</b></span>
       </div>
 
       <div class="hero-copy">
         <h1 class="rise" style="--d:.08s">A terminal that<br /> <span class="grad">doesn't feel like one.</span></h1>
-        <p class="sub rise" style="--d:.14s">Cue is a native Mac terminal with a real input bar, every command in its own card, and your own Claude one keystroke away.</p>
+        <p class="sub rise" style="--d:.14s">Cue is a native Mac terminal with a real input bar, every command in its own card, a palette for everything, and your own Claude one keystroke away.</p>
         <div class="cta-row rise" style="--d:.2s">
           <a class="btn primary" href="https://github.com/Coursion-Studio/cue/releases/latest/download/Cue.dmg" data-download>
             <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/></svg>
@@ -102,7 +108,7 @@
       </div>
 
       <figure class="hero-shot rise" style="--d:.3s">
-        <img src="screenshots/welcome.png" alt="A Cue window: the orbit project's welcome screen with shortcuts to jump to a folder, search history, ask AI and open snippets, recent folders below and the composer at the bottom" width="920" height="600" fetchpriority="high" />
+        <picture><source srcset="screenshots/welcome.webp" type="image/webp" /><img src="screenshots/welcome.png" alt="A Cue window on the orbit project's welcome screen: its branch and three changes, shortcuts to jump to a folder, search history, ask AI and open snippets, and the project's dev, build and test tasks above the composer" width="920" height="600" fetchpriority="high" /></picture>
       </figure>
     </div>
   </header>
@@ -154,7 +160,7 @@
         </div>
         <div class="split-stage">
           <figure class="shot rise" style="--d:.08s">
-            <img src="screenshots/command-cards.png" alt="Three command cards in Cue: git status, ls, and a failing make test with exit 2 after 0.8 seconds, and an Explain button above the composer" width="920" height="600" loading="lazy" />
+            <picture><source srcset="screenshots/command-cards.webp" type="image/webp" /><img src="screenshots/command-cards.png" alt="Three command cards in Cue: git status, ls, and a failing make test with exit 2, and an Explain button above the composer" width="920" height="600" loading="lazy" decoding="async" /></picture>
           </figure>
         </div>
       </div>
@@ -170,9 +176,68 @@
         </div>
         <div class="split-stage">
           <figure class="shot rise" style="--d:.08s">
-            <img src="screenshots/program-input.png" alt="Cue running a release script that asks to publish v1.4.0; the composer has become a question field with Y and N buttons" width="920" height="600" loading="lazy" />
+            <picture><source srcset="screenshots/program-input.webp" type="image/webp" /><img src="screenshots/program-input.png" alt="Cue running a release script that asks to publish v1.4.0; the composer has become a question field with Y and N buttons" width="920" height="600" loading="lazy" decoding="async" /></picture>
           </figure>
         </div>
+      </div>
+    </section>
+
+    <section id="palette" class="sec reveal" aria-labelledby="palette-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="qt-stack">
+          <figure class="shot qt rise" style="--d:.04s"><picture><source srcset="screenshots/quick-terminal.webp" type="image/webp" /><img src="screenshots/quick-terminal.png" alt="The Cue Quick Terminal: a wide panel at the top of the screen showing a git log graph and git status for the orbit project, with the composer at its foot" width="1240" height="480" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="shot pal rise" style="--d:.1s"><picture><source srcset="screenshots/palette.webp" type="image/webp" /><img src="screenshots/palette.png" alt="The Cue command palette searching for run: the Run Task slash command and every task of the orbit project, from dev to typecheck" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+        </div>
+        <div class="sec-head center">
+          <h2 id="palette-title" class="rise" style="--d:.08s">One palette, and a terminal from anywhere</h2>
+          <p class="rise" style="--d:.14s"><span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span> finds every menu command, slash command, tab, theme, snippet and recent folder, with the ones you use most first. Themes preview as you arrow past them, and <kbd>&gt;</kbd> searches your history.</p>
+          <p class="aside rise" style="--d:.2s"><span class="combo"><kbd>⌃</kbd><kbd>`</kbd></span> slides a Quick Terminal down over whatever app you are in, and it keeps its session between visits. Press it again, or <kbd>Esc</kbd> on an empty prompt, to put it away.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="sec sec-split reveal" aria-labelledby="projects-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split">
+        <div class="split-copy">
+          <h2 id="projects-title" class="rise">It knows what project you're in</h2>
+          <p class="rise" style="--d:.06s">Node, Swift, Rust, Go, Python, Make, just or Docker Compose: a chip in the composer opens the project's tasks, with its branch and changes beside them. <kbd>⏎</kbd> puts a task in the composer, <span class="combo"><kbd>⌘</kbd><kbd>⏎</kbd></span> runs it.</p>
+          <p class="aside rise" style="--d:.1s">Pull, push, switch branch and stash are one click away, and they only fill in the command. A quiet chip warns when your node or python doesn't match <code>.nvmrc</code> or <code>.python-version</code>.</p>
+        </div>
+        <div class="split-stage">
+          <figure class="shot rise" style="--d:.08s"><picture><source srcset="screenshots/project-panel.webp" type="image/webp" /><img src="screenshots/project-panel.png" alt="The Cue Project panel for orbit: npm and Make detected, a warning that node 22 differs from .nvmrc 20.18.0, the project tasks, and the main branch one commit ahead with three changes and Pull, Push, Switch and Stash buttons" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="output" class="sec reveal" aria-labelledby="output-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="shot-pair">
+          <figure class="shot rise" style="--d:.04s"><picture><source srcset="screenshots/fold.webp" type="image/webp" /><img src="screenshots/fold.png" alt="Six Cue command cards, five folded to a single line that says how many lines are hidden and one failing make test left open" width="920" height="600" loading="lazy" decoding="async" /></picture><figcaption><b>Fold</b> a card to one line. Anything over 200 lines opens trimmed.</figcaption></figure>
+          <figure class="shot rise" style="--d:.1s"><picture><source srcset="screenshots/find.webp" type="image/webp" /><img src="screenshots/find.png" alt="Find in Cue output: the query .test. highlights five matches across the npm test card, the current match in purple" width="920" height="600" loading="lazy" decoding="async" /></picture><figcaption><b>Find</b> across the pane, one card, or failed cards only.</figcaption></figure>
+        </div>
+        <div class="sec-head center">
+          <h2 id="output-title" class="rise" style="--d:.08s">Long output, under control</h2>
+          <p class="rise" style="--d:.14s">Collapse every card with <span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>←</kbd></span>, search with <span class="combo"><kbd>⌘</kbd><kbd>F</kbd></span> and step with <span class="combo"><kbd>⌘</kbd><kbd>G</kbd></span>. Quit and come back: Cue reopens your windows, tabs and splits where you left them, with the last lines of each pane above a "Restored from" line.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="share" class="sec reveal" aria-labelledby="share-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="sec-head center share-head">
+          <h2 id="share-title" class="rise">Share a command as an image</h2>
+          <p class="rise" style="--d:.06s">Any card becomes a PNG: the command, its status, the folder and the colored output, in your theme's window on a gradient, the theme or nothing at all. Secrets are redacted before you copy it.</p>
+        </div>
+        <div class="share-strip" role="list">
+          <figure class="share-card rise" role="listitem" style="--d:.06s"><picture><source srcset="screenshots/share-latte.webp" type="image/webp" /><img src="screenshots/share-latte.png" alt="A Share as Image PNG of npm test in Catppuccin Latte: ten passing tests in a light window on a pink and purple gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="share-card rise" role="listitem" style="--d:.12s"><picture><source srcset="screenshots/share-forge-night.webp" type="image/webp" /><img src="screenshots/share-forge-night.png" alt="A Share as Image PNG of npm test in Forge Night: ten passing tests in a dark window on a pink to blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="share-card rise" role="listitem" style="--d:.18s"><picture><source srcset="screenshots/share-tokyo-night.webp" type="image/webp" /><img src="screenshots/share-tokyo-night.png" alt="A Share as Image PNG of npm test in Tokyo Night: ten passing tests on a purple and blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
+        </div>
+        <p class="share-note rise" style="--d:.2s">Those are straight out of Cue, untouched.</p>
       </div>
     </section>
 
@@ -197,7 +262,7 @@
         <div class="kb-stage rise"><div class="kb" aria-hidden="true"></div></div>
         <div class="sec-head center">
           <h2 id="keys-title" class="rise" style="--d:.08s">Keys you'll reach for</h2>
-          <p class="rise" style="--d:.14s"><span class="combo"><kbd>⌃</kbd><kbd>R</kbd></span> history, <span class="combo"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd></span> snippets, <span class="combo"><kbd>⌘</kbd><kbd>T</kbd></span> a new tab, <span class="combo"><kbd>⌘</kbd><kbd>D</kbd></span> a split, <span class="combo"><kbd>⌘</kbd><kbd>B</kbd></span> folds the sidebar.</p>
+          <p class="rise" style="--d:.14s"><span class="combo"><kbd>⌃</kbd><kbd>R</kbd></span> history, <span class="combo"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd></span> snippets, <span class="combo"><kbd>⌘</kbd><kbd>T</kbd></span> a new tab, <span class="combo"><kbd>⌘</kbd><kbd>D</kbd></span> a split, <span class="combo"><kbd>⌘</kbd><kbd>B</kbd></span> folds the sidebar, <span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span> opens the palette.</p>
           <p class="kb-pill rise" style="--d:.2s" aria-live="polite">
             <span class="dot" aria-hidden="true"></span>
             <span class="kb-text" data-touch="On a Mac, these keys light up as you type.">Type on your keyboard. The keys light up with yours.</span>
@@ -211,8 +276,8 @@
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
         <div class="theme-pair">
-          <figure class="shot back rise" style="--d:.04s"><img src="screenshots/theme-latte.png" alt="Cue in the Catppuccin Latte light theme with command cards" width="920" height="600" loading="lazy" /></figure>
-          <figure class="shot front rise" style="--d:.1s"><img src="screenshots/theme-tokyo-night.png" alt="Cue in the Tokyo Night theme with tabs along the top" width="920" height="600" loading="lazy" /></figure>
+          <figure class="shot back rise" style="--d:.04s"><picture><source srcset="screenshots/theme-latte.webp" type="image/webp" /><img src="screenshots/theme-latte.png" alt="Cue in the Catppuccin Latte light theme with command cards, some folded" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="shot front rise" style="--d:.1s"><picture><source srcset="screenshots/theme-tokyo-night.webp" type="image/webp" /><img src="screenshots/theme-tokyo-night.png" alt="Cue in the Tokyo Night theme with tabs along the top" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
         </div>
         <div class="sec-head center">
           <h2 id="themes-title" class="rise" style="--d:.08s">Make it look like yours</h2>
