@@ -5,5 +5,24 @@
     <link>https://coursion-studio.github.io/cue/appcast.xml</link>
     <description>Updates for Cue — a native macOS terminal from Coursion.</description>
     <language>en</language>
-  </channel>
+  
+    <item>
+      <title>Version 0.3.1</title>
+      <pubDate>Fri, 16 Oct 2026 17:50:53 +0300</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>The first public release of Cue, a terminal that doesn&#x27;t feel like one.</p>
+<ul>
+<li><strong>A composer instead of a prompt.</strong> Type commands in a native input bar with autocomplete, history and <code>/</code> commands (<code>/ask</code>, <code>/explain</code>, <code>/history</code>, <code>/snippets</code>, <code>/cd</code>, <code>/theme</code>, <code>/clear</code>).</li>
+<li><strong>Every command is a card.</strong> Its output, exit code and duration stay together; copy the command or the output, re-run it, or explain a failure.</li>
+<li><strong>Programs that ask, get a field.</strong> When a running program asks for input (a password, a yes/no), the composer becomes a question field; Esc hands the keys back to the terminal.</li>
+<li><strong>AI with your own Claude.</strong> Explain, fix or ask about any command with your Anthropic key or the <code>claude</code> CLI you already have. Secrets are redacted before anything is sent.</li>
+<li><strong>Themes, sidebar tabs and splits.</strong> A tab sidebar (⌘B folds it) or a strip along the top, split panes, and a theme library.</li>
+<li><strong>History and snippets.</strong> ⌃R searches every command you ran, with saved snippets beside it.</li>
+<li><strong>Updates itself.</strong> Check for Updates… in the Cue menu; Cue also checks once a day.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/cue/releases/download/v0.3.1/Cue-0.3.1.dmg" type="application/octet-stream" sparkle:edSignature="Az+jGRLLwi5gIz/ft2TpvHlb8379ArDNrq10Zh0FSs7/NLTAGqD7BrXcTtRTnqd1ibxzmX+hRTJd2FbWGRjqCw==" length="5634225" />
+    </item>
+</channel>
 </rss>
