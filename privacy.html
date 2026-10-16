@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — Cue</title>
+  <meta name="description" content="Cue collects nothing: no analytics, no telemetry, no account. Here is every time it uses the network." />
+  <link rel="canonical" href="https://coursion-studio.github.io/cue/privacy.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
+  <link rel="stylesheet" href="cue.css?v=05050bbbe6" />
+  <meta name="theme-color" content="#0E1224" />
+</head>
+<body class="legal-page">
+  <div class="legal-glow" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="top">
+      <a class="brand" href="./"><img src="icon.png" alt="" width="26" height="26" /><span>Cue</span></a>
+      <div class="links">
+        <a href="./">Home</a>
+        <a class="keep" href="./#download">Download</a>
+      </div>
+    </nav>
+
+    <main class="legal">
+      <p class="eyebrow">Privacy</p>
+      <h1>Cue collects nothing.</h1>
+      <p class="updated">Last updated 16 October 2026</p>
+      <p class="lede">Cue has no analytics, no telemetry, no crash reporting service and no account. It never builds a profile of you. What you type, what your commands print and what is in your files stay on your Mac. Cue only uses the network in the two cases below.</p>
+
+      <section>
+        <h2>1. Checking for updates</h2>
+        <p>Cue uses Sparkle to look for new versions. Once a day, and when you choose <b>Check for Updates…</b>, it requests <code>https://coursion-studio.github.io/cue/appcast.xml</code>. That is a standard Sparkle request: it carries the app's version and your macOS version, and like any web request it reveals your IP address to the host. Cue does not send Sparkle's optional system profile, and the request carries nothing about you or what you do in Cue.</p>
+        <p>The feed is a static file on GitHub Pages and new versions download from GitHub Releases. We don't run a server that sees these requests.</p>
+      </section>
+
+      <section>
+        <h2>2. AI features you use</h2>
+        <p>Explain, fix and ask only send anything when you use them, and only after you have set them up:</p>
+        <ul>
+          <li><b>With your own Anthropic API key.</b> The request goes straight from your Mac to <code>api.anthropic.com</code>. It holds what the feature needs: your question, or the command, its exit code and the last lines of its output, plus your macOS version, your shell's name and the current folder so the answer fits your setup. Before it leaves your Mac, the question, command and output go through a redactor that masks tokens, passwords and keys. Anthropic's own privacy policy covers what happens there.</li>
+          <li><b>With the <code>claude</code> CLI.</b> Cue runs the <code>claude</code> program already installed on your Mac and passes it the same redacted text. That tool then talks to Anthropic under your own sign-in and its own terms.</li>
+        </ul>
+        <p>Your API key is stored in the macOS Keychain. It is never written to a file, logged or sent anywhere but Anthropic. If you never set up a key or the CLI, nothing is sent. You can also switch AI off in Settings.</p>
+      </section>
+
+      <section>
+        <h2>What stays on your Mac</h2>
+        <ul>
+          <li><b>Shell history and snippets.</b> The commands you run and the snippets you save are kept in Cue's folder in Application Support. They never leave your Mac.</li>
+          <li><b>Settings and themes.</b> Kept in your user preferences and in the same Application Support folder.</li>
+          <li><b>Your shell.</b> Cue starts your own shell with a few prompt marks added. It doesn't edit your dotfiles.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>This website</h2>
+        <p>This site has no analytics, no cookies, no tracking pixels and no third-party scripts. It is served by GitHub Pages, and GitHub may log requests (such as your IP address) as part of running that service, under GitHub's own privacy statement. Download links point to GitHub Releases.</p>
+      </section>
+
+      <section>
+        <h2>Changes and contact</h2>
+        <p>If Cue ever starts sending something new, this page changes first and the release notes say so. Cue is made by Coursion Studio; you can reach us through <a href="https://coursion.studio">coursion.studio</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="./">Home</a>
+        <a href="./#download">Download</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://coursion.studio">Coursion Studio</a>
+      </div>
+      <div>© 2026 <a href="https://coursion.studio">Coursion Studio</a></div>
+    </footer>
+  </div>
+</body>
+</html>
