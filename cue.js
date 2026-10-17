@@ -44,6 +44,7 @@
   const failText = $(".cmp-fail-t", term);
   const themeLabel = $(".term-theme", term);
   const pathChip = $(".chip.path", term);
+  const replay = $(".term-replay", term);
 
   const THEMES = [
     { id: "forge-night", name: "Forge Night" },
@@ -70,24 +71,25 @@
     "git log --oneline -3": () => ({ out: '<span class="y">5873630</span> (<span class="c">HEAD -&gt;</span> <span class="g">main</span>) Add a TTL to the cache\n<span class="y">adeb42b</span> Write the store atomically\n<span class="y">e7504ca</span> Retry API calls on 503', ms: 35 }),
     "make test": () => ({
       out: '<span class="d">orbit@1.3.2 test</span>\n <span class="g">✓</span> config  parses orbit.toml <span class="d">(4 ms)</span>\n <span class="g">✓</span> api     retries on 503 <span class="d">(212 ms)</span>\n <span class="g">✓</span> store   writes atomically <span class="d">(18 ms)</span>\n <span class="r">✗</span> cache   expires stale entries <span class="d">(1003 ms)</span>\n\n   <span class="r">Expected:</span> 0 entries\n   <span class="r">Received:</span> 2 entries\n\nTests: <span class="r">1 failed</span>, <span class="g">3 passed</span>, 4 total\nmake: *** [test] Error 1',
-      ms: 820, code: 2
+      ms: 1400, code: 2
     })
   };
 
-  let theme = 0, path = "orbit", lastFail = null, touched = false, auto = 0;
+  let theme = 0, path = "orbit", lastFail = null, auto = 0;
+  let gen = 0, live = null, playing = false;
   let matches = [], sel = 0, recall = -1;
   const ran = [];
 
-  function card({ cmd, out, ms, code = 0, kind = "", meta = "" }) {
+  const fmt = (ms) => ms < 1000 ? ms + "ms" : (ms / 1000).toFixed(1) + "s";
+  const pillFor = (ms, code) => code ? `<span class="pill bad">✕ exit ${code} ${fmt(ms)}</span>` : `<span class="pill ok">✓ ${fmt(ms)}</span>`;
+  function card({ cmd, out, ms, code = 0, kind = "", meta = "", running = false }) {
     const el = document.createElement("div");
-    el.className = "card" + (kind ? " " + kind : code ? " fail" : "");
+    el.className = "card" + (running ? " running" : kind ? " " + kind : code ? " fail" : "");
     const [head, ...rest] = cmd.split(" ");
-    const time = ms < 1000 ? ms + "ms" : (ms / 1000).toFixed(1) + "s";
-    const pill = kind === "ai" ? `<span class="pill ai">${meta}</span>`
-      : code ? `<span class="pill bad">✕ exit ${code} ${time}</span>` : `<span class="pill ok">✓ ${time}</span>`;
+    const pill = running ? `<span class="pill run">0.0s</span>` : kind === "ai" ? `<span class="pill ai">${meta}</span>` : pillFor(ms, code);
     el.innerHTML = `<div class="card-head"><span class="card-cmd">${esc(head)} <span>${esc(rest.join(" "))}</span></span>` +
       `<span class="card-meta"><span class="path">~/Projects/${path}</span>${pill}</span></div>` +
-      (out ? `<pre class="card-out${kind === "ai" ? " prose" : ""}">${out}</pre>` : "");
+      (out || running ? `<pre class="card-out${kind === "ai" ? " prose" : ""}">${out || ""}</pre>` : "");
     if (!calm()) el.classList.add("enter");
     list.appendChild(el);
     while (list.children.length > 6) list.firstElementChild.remove();
@@ -100,6 +102,81 @@
     fail.hidden = false;
   }
 
+  const later = (ms) => { const g = gen; return new Promise((r) => setTimeout(() => { if (g === gen) r(); }, ms)); };
+  function settle() {
+    if (!live) return;
+    const { el, text, r, tick } = live;
+    live = null;
+    clearInterval(tick);
+    $(".card-out", el).innerHTML = r.out;
+    el.classList.remove("running");
+    if (r.code) el.classList.add("fail");
+    $(".pill", el).outerHTML = pillFor(r.ms, r.code);
+    if (r.code) failed(text, r.code); else fail.hidden = true;
+  }
+  async function stream(text, r) {
+    settle();
+    fail.hidden = true;
+    const el = card({ cmd: text, running: true });
+    const pre = $(".card-out", el);
+    const pill = $(".pill", el);
+    const lines = r.out.split("\n");
+    const start = performance.now();
+    const tick = setInterval(() => { pill.textContent = ((performance.now() - start) / 1000).toFixed(1) + "s"; }, 100);
+    live = { el, text, r, tick };
+    const g = gen;
+    for (let i = 0; i < lines.length; i++) {
+      await new Promise((res) => setTimeout(res, r.ms / lines.length));
+      if (g !== gen || !live || live.el !== el) return;
+      pre.innerHTML += (i ? "\n" : "") + lines[i];
+    }
+    settle();
+  }
+  async function typeAuto(text) {
+    for (let n = 1; n <= text.length; n++) {
+      await later(50 + Math.random() * 45);
+      input.value = text.slice(0, n);
+      render();
+    }
+    await later(380);
+    input.value = "";
+    render();
+  }
+  function setReplay() {
+    if (!replay) return;
+    replay.hidden = calm();
+    replay.textContent = playing ? "Skip" : "Replay";
+    replay.setAttribute("aria-label", playing ? "Skip the intro" : "Replay the intro");
+  }
+  function finalState() {
+    clear();
+    card({ cmd: "git status -sb", ...OUT["git status -sb"]() });
+    const t = OUT["make test"]();
+    card({ cmd: "make test", ...t });
+    failed("make test", t.code);
+  }
+  async function intro() {
+    stopAuto();
+    playing = true;
+    list.setAttribute("aria-live", "off");
+    setReplay();
+    clear();
+    input.value = "";
+    render();
+    const g = gen;
+    await later(450);
+    for (const cmd of ["git status -sb", "make test"]) {
+      await typeAuto(cmd);
+      ran.push(cmd);
+      await stream(cmd, OUT[cmd]());
+      if (g !== gen) return;
+      await later(500);
+    }
+    playing = false;
+    list.setAttribute("aria-live", "polite");
+    setReplay();
+  }
+
   function run(raw) {
     const text = raw.trim().replace(/\s+/g, " ");
     if (!text) return;
@@ -110,6 +187,8 @@
     const word = text.split(" ")[0];
     if (OUT[text]) {
       const r = OUT[text]();
+      if (!calm()) { stream(text, r); return; }
+      settle();
       card({ cmd: text, ...r });
       if (r.code) failed(text, r.code); else fail.hidden = true;
       return;
@@ -125,6 +204,7 @@
   }
 
   function clear() {
+    settle();
     list.innerHTML = "";
     fail.hidden = true;
   }
@@ -214,7 +294,19 @@
     render();
     run("/" + m.id);
   }
-  function stopAuto() { clearTimeout(auto); auto = 0; }
+  function stopAuto() {
+    clearTimeout(auto);
+    auto = 0;
+    gen++;
+    settle();
+    if (playing) {
+      playing = false;
+      input.value = "";
+      render();
+      list.setAttribute("aria-live", "polite");
+      setReplay();
+    }
+  }
   function typeIn(text, focus) {
     stopAuto();
     if (calm()) { input.value = text; sel = 0; render(); if (focus) input.focus({ preventScroll: true }); return; }
@@ -230,8 +322,8 @@
     auto = setTimeout(step, 140);
   }
 
-  input.addEventListener("input", () => { touched = true; stopAuto(); sel = 0; render(); });
-  input.addEventListener("focus", () => { touched = true; stopAuto(); });
+  input.addEventListener("input", () => { stopAuto(); sel = 0; render(); });
+  input.addEventListener("focus", stopAuto);
   input.addEventListener("keydown", (e) => {
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
@@ -257,24 +349,22 @@
       if (!menu.hidden || input.value) { e.preventDefault(); input.value = ""; render(); }
     }
   });
-  $(".cmp-explain", term).addEventListener("click", () => { touched = true; run("/explain"); });
-  $$(".chip-q").forEach((b) => b.addEventListener("click", () => { touched = true; sel = 0; typeIn(b.dataset.q, true); }));
+  $(".cmp-explain", term).addEventListener("click", () => { stopAuto(); run("/explain"); });
+  $$(".chip-q").forEach((b) => b.addEventListener("click", () => { sel = 0; typeIn(b.dataset.q, true); }));
 
-  card({ cmd: "git status -sb", ...OUT["git status -sb"]() });
-  const t = OUT["make test"]();
-  card({ cmd: "make test", ...t });
-  failed("make test", t.code);
   themeLabel.textContent = THEMES[0].name;
-  ran.push("git status -sb", "make test");
-  if (frozen) { input.value = "/"; render(); return; }
-  render();
-
-  if (window.Stage && window.Stage.watch) {
-    window.Stage.watch(term, () => {
-      if (touched || input.value) return;
-      touched = true;
-      if (calm()) { input.value = "/"; render(); return; }
-      auto = setTimeout(() => typeIn("/", false), 600);
-    }, null, 0.6);
+  if (replay) replay.addEventListener("click", () => {
+    if (playing) { stopAuto(); finalState(); ran.length = 0; ran.push("git status -sb", "make test"); return; }
+    intro();
+  });
+  if (calm()) {
+    finalState();
+    ran.push("git status -sb", "make test");
+    render();
+    setReplay();
+    return;
   }
+  render();
+  intro();
+  still.addEventListener("change", setReplay);
 })();

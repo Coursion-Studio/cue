@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
-  <link rel="stylesheet" href="cue.css?v=6a0fa5dab1" />
+  <link rel="stylesheet" href="cue.css?v=15d2f838bf" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cue" />
   <meta property="og:url" content="https://coursion-studio.github.io/cue/" />
@@ -29,7 +29,7 @@
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "macOS 15 or later",
     "description": "A free, native macOS terminal with a composer, command cards, a command palette, a Quick Terminal, project awareness and your own Claude.",
-    "softwareVersion": "0.4.0",
+    "softwareVersion": "0.4.1",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "Coursion Studio", "url": "https://coursion.studio" }
   }
@@ -44,112 +44,87 @@
     };
   </script>
   <script defer src="stage.js?v=bda7026e0e"></script>
-  <script defer src="cue.js?v=228a80e128"></script>
+  <script defer src="cue.js?v=dfe0ce8f82"></script>
 </head>
 <body>
-  <a class="skip" href="#try">Skip to the demo</a>
+  <a class="skip" href="#try">Skip to the live demo</a>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <g id="i-composer"><rect x="3" y="13" width="18" height="7" rx="2.5"/><path d="m6.5 4.5 3 3-3 3"/><path d="M12 10.5h5"/></g>
-    <g id="i-cards"><rect x="3.5" y="4" width="17" height="7" rx="2"/><rect x="3.5" y="13" width="17" height="7" rx="2"/><path d="M6.5 7.5h5M6.5 16.5h7"/></g>
-    <g id="i-ask"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16h-8l-4.5 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 5 5z"/><path d="M10.2 9a1.9 1.9 0 1 1 2.5 1.8c-.4.2-.7.5-.7.9v.2"/><path d="M12 13.6v.1"/></g>
     <g id="i-spark"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15.5v5M16 18h5"/></g>
-    <g id="i-palette"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.7 1.6-1.5 0-.4-.2-.8-.5-1.1-.3-.3-.4-.6-.4-1 0-.8.7-1.4 1.5-1.4H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8"/><circle cx="7.5" cy="12" r="1.1"/><circle cx="9.5" cy="8" r="1.1"/><circle cx="14.5" cy="7.6" r="1.1"/></g>
-    <g id="i-sidebar"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M9 5v14"/><path d="M5.2 8.5h1.6M5.2 11h1.6"/></g>
-    <g id="i-split"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M12 5v14M12 12h9"/></g>
-    <g id="i-history"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v3.5h3.5"/><path d="M12 8v4l2.8 1.8"/></g>
-    <g id="i-shell"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="m7.5 10 2.5 2-2.5 2M12 15h4.5"/></g>
     <g id="i-key"><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5M16.5 6.5l2.5 2.5M14.5 8.5l2 2"/></g>
     <g id="i-shield"><path d="M12 3 19.5 6v5.4c0 4.4-3.1 8.4-7.5 9.6-4.4-1.2-7.5-5.2-7.5-9.6V6z"/><path d="m9 12 2 2 4-4"/></g>
     <g id="i-direct"><path d="M4 12h13"/><path d="m13 7 5 5-5 5"/><path d="M20.5 5v14"/></g>
-    <g id="i-cmdk"><path d="M9 9V7a2 2 0 1 0-2 2h10a2 2 0 1 0-2-2v10a2 2 0 1 0 2-2H7a2 2 0 1 0 2 2V9z"/></g>
-    <g id="i-drop"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 12h17"/><path d="m7 7.2 2 1.4-2 1.4M11 9.8h3"/></g>
-    <g id="i-project"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></g>
     <g id="i-copy"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></g>
   </defs></svg>
 
-  <header class="stage-hero reveal" data-live>
-    <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+  <header class="stage-hero hero reveal">
     <div class="container">
       <nav class="top">
         <a class="brand" href="./"><img src="icon.png" alt="" width="26" height="26" /><span>Cue</span></a>
         <div class="links">
-          <a href="#try">Try it</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="#cards">Features</a>
+          <a href="https://github.com/Coursion-Studio/cue/releases">Release notes</a>
           <a class="keep" href="#download">Download</a>
         </div>
       </nav>
 
-      <div class="fan" role="img" aria-label="The Cue icon with its composer, command cards, command palette, Quick Terminal, projects, AI and themes fanned out beneath it.">
-        <img class="fan-icon" src="icon.png" alt="" width="160" height="160" fetchpriority="high" />
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-composer"/></svg></span><b>Composer</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-cards"/></svg></span><b>Cards</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-cmdk"/></svg></span><b>Palette</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><b>Quick Terminal</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-project"/></svg></span><b>Projects</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><b>Your Claude</b></span>
-        <span class="fan-item"><span class="tile"><svg viewBox="0 0 24 24"><use href="#i-palette"/></svg></span><b>Themes</b></span>
-      </div>
-
-      <div class="hero-copy">
-        <h1 class="rise" style="--d:.08s">A terminal that<br /> <span class="grad">doesn't feel like one.</span></h1>
-        <p class="sub rise" style="--d:.14s">Cue is a native Mac terminal with a real input bar, every command in its own card, a palette for everything, and your own Claude one keystroke away.</p>
-        <div class="cta-row rise" style="--d:.2s">
-          <a class="btn primary" href="https://github.com/Coursion-Studio/cue/releases/latest/download/Cue.dmg" data-download>
-            <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/></svg>
-            Download for Mac
-          </a>
-          <div class="brew" data-copy="brew install --cask coursion-studio/tools/cue">
-            <span class="brew-prompt" aria-hidden="true">$</span>
-            <code>brew install --cask coursion-studio/tools/cue</code>
-            <button class="brew-copy" type="button" aria-label="Copy the Homebrew command"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
-          </div>
-        </div>
-        <p class="req-note rise" style="--d:.24s">Free · macOS 15 Sequoia or later · Apple silicon</p>
-      </div>
-
-      <figure class="hero-shot rise" style="--d:.3s">
-        <picture><source srcset="screenshots/welcome.webp" type="image/webp" /><img src="screenshots/welcome.png" alt="A Cue window on the orbit project's welcome screen: its branch and three changes, shortcuts to jump to a folder, search history, ask AI and open snippets, and the project's dev, build and test tasks above the composer" width="920" height="600" fetchpriority="high" /></picture>
-      </figure>
-    </div>
-  </header>
-
-  <main>
-    <section id="try" class="sec reveal" aria-labelledby="try-title">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="term rise" data-term>
-          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><b>orbit</b><span class="term-theme"></span></div>
-          <div class="term-cards" aria-live="polite"></div>
-          <div class="cmp">
-            <div class="cmp-fail" hidden><span class="x" aria-hidden="true">✕</span><span class="cmp-fail-t"></span><button type="button" class="cmp-explain"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-spark"/></svg>Explain</button></div>
-            <ul class="cmp-menu" id="cmp-menu" role="listbox" aria-label="Slash commands" hidden></ul>
-            <div class="cmp-field">
-              <span class="cmp-ghost" aria-hidden="true"><span class="cmp-ghost-typed"></span><span class="cmp-ghost-rest"></span></span>
-              <input class="cmp-input" type="text" role="combobox" aria-expanded="false" aria-controls="cmp-menu" aria-autocomplete="list" aria-label="Try the Cue composer: type a command, or / for actions" placeholder="Run a command, or type / for actions" autocomplete="off" autocapitalize="off" spellcheck="false" />
-            </div>
-            <div class="cmp-foot" aria-hidden="true">
-              <span class="chip on">⌘ Command</span>
-              <span class="chip">Ask AI</span>
-              <span class="chip path">~/Projects/orbit</span>
-              <span class="chip branch">main</span>
-              <span class="cmp-enter">⏎</span>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="hero-eyebrow rise" style="--d:.04s"><span class="prompt" aria-hidden="true">~</span> A native macOS terminal for zsh, bash and fish</p>
+          <h1 class="rise" style="--d:.08s">Commands in.<br /> Cards out.<span class="hero-cursor" aria-hidden="true"></span></h1>
+          <p class="sub rise" style="--d:.14s">Type in a real input bar with autocomplete and history. Every command comes back as a card with its output, exit code and duration, and <span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span> reaches everything else. Your shell and your dotfiles stay as they are.</p>
+          <div class="hero-cta rise" style="--d:.2s">
+            <a class="btn primary" href="https://github.com/Coursion-Studio/cue/releases/latest/download/Cue.dmg" data-download>
+              <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/></svg>
+              Download for macOS
+            </a>
+            <div class="brew" data-copy="brew install --cask coursion-studio/tools/cue">
+              <span class="brew-prompt" aria-hidden="true">$</span>
+              <code>brew install --cask <span>coursion-studio/tools/cue</span></code>
+              <button class="brew-copy" type="button" aria-label="Copy the Homebrew command"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
             </div>
           </div>
+          <ul class="hero-meta rise" style="--d:.24s">
+            <li><a href="https://github.com/Coursion-Studio/cue/releases/tag/v0.4.1">Version 0.4.1</a></li>
+            <li>Free</li>
+            <li>macOS 15 or later</li>
+            <li>Apple silicon</li>
+          </ul>
         </div>
-        <div class="sec-head center">
-          <h2 id="try-title" class="rise" style="--d:.08s">Try the composer</h2>
-          <p class="rise" style="--d:.14s">Type <kbd>/</kbd> for actions, or run a command. Tab takes the suggestion, the arrow keys pick, and <kbd>⏎</kbd> runs it.</p>
-          <div class="chips rise" style="--d:.2s">
+
+        <div id="try" class="hero-stage rise" style="--d:.16s">
+          <div class="term" data-term>
+            <div class="term-bar"><span class="term-lights" aria-hidden="true"><i></i><i></i><i></i></span><b>orbit</b><span class="term-theme"></span><button type="button" class="term-replay" hidden>Skip</button></div>
+            <div class="term-cards" aria-live="polite"></div>
+            <div class="cmp">
+              <div class="cmp-fail" hidden><span class="x" aria-hidden="true">✕</span><span class="cmp-fail-t"></span><button type="button" class="cmp-explain"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-spark"/></svg>Explain</button></div>
+              <ul class="cmp-menu" id="cmp-menu" role="listbox" aria-label="Slash commands" hidden></ul>
+              <div class="cmp-field">
+                <span class="cmp-ghost" aria-hidden="true"><span class="cmp-ghost-typed"></span><span class="cmp-ghost-rest"></span></span>
+                <input class="cmp-input" type="text" role="combobox" aria-expanded="false" aria-controls="cmp-menu" aria-autocomplete="list" aria-label="Try the Cue composer: type a command, or / for actions" placeholder="Run a command, or type / for actions" autocomplete="off" autocapitalize="off" spellcheck="false" />
+              </div>
+              <div class="cmp-foot" aria-hidden="true">
+                <span class="chip on">⌘ Command</span>
+                <span class="chip">Ask AI</span>
+                <span class="chip path">~/Projects/orbit</span>
+                <span class="chip branch">main</span>
+                <span class="cmp-enter">⏎</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-try">
+            <span class="hero-try-label">Try it here</span>
             <button type="button" class="chip-q" data-q="/">/</button>
             <button type="button" class="chip-q" data-q="git status -sb">git status -sb</button>
             <button type="button" class="chip-q" data-q="make test">make test</button>
             <button type="button" class="chip-q" data-q="/theme">/theme</button>
           </div>
-          <p class="demo-note rise" style="--d:.24s">A demo on this page. The real one runs your own shell.</p>
+          <p class="hero-note">A demo on this page. The real Cue runs your own shell.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </header>
 
+  <main>
     <section id="cards" class="sec sec-split reveal" aria-labelledby="cards-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container split">
@@ -301,7 +276,7 @@
           </a>
           <div class="brew" data-copy="brew install --cask coursion-studio/tools/cue">
             <span class="brew-prompt" aria-hidden="true">$</span>
-            <code>brew install --cask coursion-studio/tools/cue</code>
+            <code>brew install --cask <span>coursion-studio/tools/cue</span></code>
             <button class="brew-copy" type="button" aria-label="Copy the Homebrew command"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
           </div>
         </div>
