@@ -22,7 +22,7 @@ Get the latest DMG from [Releases](https://github.com/Coursion-Studio/cue/releas
 
 ## Requirements
 
-- **macOS:** 15 Sequoia or later, on Apple silicon.
+- **macOS:** 15 Sequoia or later, on Apple silicon or Intel.
 - **Font:** a [Nerd Font](https://www.nerdfonts.com/) is recommended, so prompt glyphs render.
 - **AI (optional):** an Anthropic API key, or the `claude` CLI on your `PATH`.
 
