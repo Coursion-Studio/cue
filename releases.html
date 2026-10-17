@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Release notes — Cue</title>
+  <meta name="description" content="What changed in each version of Cue, the native macOS terminal. Latest: 0.4.1." />
+  <link rel="canonical" href="https://cue.coursion.studio/releases.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
+  <link rel="stylesheet" href="cue.css?v=e607624e32" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cue" />
+  <meta property="og:url" content="https://cue.coursion.studio/releases.html" />
+  <meta property="og:title" content="Release notes — Cue" />
+  <meta property="og:description" content="What changed in each version of Cue. Latest: 0.4.1." />
+  <meta property="og:image" content="https://cue.coursion.studio/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0E1224" />
+</head>
+<body class="legal-page">
+  <div class="legal-glow" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="top">
+      <a class="brand" href="./"><img src="icon.png" alt="" width="26" height="26" /><span>Cue</span></a>
+      <div class="links">
+        <a href="./">Home</a>
+        <a class="keep" href="./#download">Download</a>
+      </div>
+    </nav>
+
+    <main class="legal notes">
+      <p class="eyebrow">Release notes</p>
+      <h1>What's new in Cue</h1>
+      <p class="lede">Every version, newest first. Cue checks for updates once a day, or choose <b>Check for Updates…</b> in the Cue menu.</p>
+
+      <article class="release" id="v0.4.1" aria-labelledby="v0.4.1-title">
+        <header class="release-head">
+          <h2 id="v0.4.1-title"><a href="#v0.4.1">0.4.1</a></h2>
+          <span class="release-latest">Latest</span><time datetime="2026-10-17">17 October 2026</time>
+          <a class="release-link" href="https://github.com/Coursion-Studio/cue/releases/tag/v0.4.1">GitHub release</a>
+        </header>
+        <ul>
+        <li><strong>Cards survive a resize.</strong> Switching between the tab sidebar and tabs on top, splitting a pane, resizing the window or changing the font no longer turns earlier command cards back into plain text; each card follows its lines when the terminal rewraps.</li>
+        <li><strong>No more doubled commands.</strong> A command sent while the shell was still drawing its prompt (common with slow prompts like Powerlevel10k, gitstatus or nvm) could show up twice, and keys typed right after Return could end up glued to the next command. Cue now waits for the line editor before sending, and holds keys typed right after Return until it knows whether they belong to the composer or the running program.</li>
+        </ul>
+      </article>
+
+      <article class="release" id="v0.4.0" aria-labelledby="v0.4.0-title">
+        <header class="release-head">
+          <h2 id="v0.4.0-title"><a href="#v0.4.0">0.4.0</a></h2>
+          <time datetime="2026-10-16">16 October 2026</time>
+          <a class="release-link" href="https://github.com/Coursion-Studio/cue/releases/tag/v0.4.0">GitHub release</a>
+        </header>
+        <ul>
+        <li><strong>Command palette (⌘K).</strong> Search every menu command, slash command, open tab, theme (previewed live as you arrow through), snippet and recent folder from one floating list, with your most used actions first; type <code>&gt;</code> to search history. Clear moves to ⇧⌘K.</li>
+        <li><strong>Quick Terminal (⌃`).</strong> A terminal slides down from the top of the screen over any app and keeps its session between visits. Press the shortcut again or Esc on an empty prompt to put it away; drag its bottom edge to resize. Shortcut, screen, height and hide-on-focus-loss are in Settings → Quick Terminal.</li>
+        <li><strong>Motion pass.</strong> Command cards fade in as they start; a finished run&#x27;s pill pops from the spinner to a drawn check or cross, and a failed card&#x27;s stripe flares once. The Command/Ask switch slides, notices and hover actions ease in, the welcome screen staggers in on a new pane, new tabs and split panes grow in, the sidebar&#x27;s labels fade before it folds, a long command finishing in another tab bounces its dot (now green until you look), Stop flashes, and theme changes crossfade the window. Reduce Motion keeps the fades and drops the movement. A hidden running strip no longer animates its loader, so an idle pane drops from about 40% CPU to under 1%.</li>
+        <li><strong>Projects.</strong> Cue now knows when a pane is inside a project: Node (with its package manager from the lockfile), Swift (Package.swift, Xcode schemes, XcodeGen), Rust, Go, Python (and its venv), Make, just and Docker Compose. A project chip in the composer opens a Project panel of runnable tasks (Return inserts, ⌘Return runs) with git state and quick pull, push, branch switch and stash, which only insert their command. The welcome screen shows the top four tasks, <code>/run &lt;task&gt;</code> completes and runs a task, <code>/git</code> opens the branch switcher, the ⌘K palette lists “Run task: …” items, and a quiet chip warns when the active node or python differs from <code>.nvmrc</code>, <code>.node-version</code>, <code>.python-version</code> or <code>.tool-versions</code>. Detection runs off the main thread, is cached, refreshes when the key files change, and never reads <code>node_modules</code>.</li>
+        <li><strong>Share as Image…</strong> Any command card can become a PNG: its command, status, folder and colored output in the window chrome of the current or a chosen theme, on a gradient, the theme or a transparent background. Secrets are redacted by default. Copy, save or share it from the preview.</li>
+        <li><strong>Pick up where you left off.</strong> Cue reopens every window with its tabs, names, splits and folders, and (Settings → General) shows each pane&#x27;s last 1,000 lines dimmed above a &quot;Restored from&quot; divider. Secrets are masked and hidden answers never saved.</li>
+        <li><strong>Fold long output.</strong> Click a card&#x27;s chevron or ⌥-click its header to collapse it to one line; cards over 200 lines open trimmed to their first and last 20. ⌘⌥← collapses every card, ⌘⌥→ expands them. Pane selection moved to ⌃⌘ + arrows.</li>
+        <li><strong>Find in output.</strong> ⌘F searches the whole pane, a selected card or failed cards only, with match case and regex; ⌘G and ⇧⌘G step through, and matches inside folded cards open them.</li>
+        </ul>
+      </article>
+
+      <article class="release" id="v0.3.1" aria-labelledby="v0.3.1-title">
+        <header class="release-head">
+          <h2 id="v0.3.1-title"><a href="#v0.3.1">0.3.1</a></h2>
+          <time datetime="2026-10-16">16 October 2026</time>
+          <a class="release-link" href="https://github.com/Coursion-Studio/cue/releases/tag/v0.3.1">GitHub release</a>
+        </header>
+        <p>The first public release of Cue, a terminal that doesn&#x27;t feel like one.</p>
+        <ul>
+        <li><strong>A composer instead of a prompt.</strong> Type commands in a native input bar with autocomplete, history and <code>/</code> commands (<code>/ask</code>, <code>/explain</code>, <code>/history</code>, <code>/snippets</code>, <code>/cd</code>, <code>/theme</code>, <code>/clear</code>).</li>
+        <li><strong>Every command is a card.</strong> Its output, exit code and duration stay together; copy the command or the output, re-run it, or explain a failure.</li>
+        <li><strong>Programs that ask, get a field.</strong> When a running program asks for input (a password, a yes/no), the composer becomes a question field; Esc hands the keys back to the terminal.</li>
+        <li><strong>AI with your own Claude.</strong> Explain, fix or ask about any command with your Anthropic key or the <code>claude</code> CLI you already have. Secrets are redacted before anything is sent.</li>
+        <li><strong>Themes, sidebar tabs and splits.</strong> A tab sidebar (⌘B folds it) or a strip along the top, split panes, and a theme library.</li>
+        <li><strong>History and snippets.</strong> ⌃R searches every command you ran, with saved snippets beside it.</li>
+        <li><strong>Updates itself.</strong> Check for Updates… in the Cue menu; Cue also checks once a day.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-row">
+        <p class="foot-brand"><img src="icon.png" alt="" width="20" height="20" /><span>© 2026 Coursion Studio</span></p>
+        <nav class="foot-links" aria-label="Footer">
+          <a href="./">Home</a>
+          <a href="./#download">Download</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://coursion.studio">Coursion Studio</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
