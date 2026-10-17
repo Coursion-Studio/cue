@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Cue social preview</title>
+<style>
+  :root {
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    --fg: #F5F3F2;
+    --dim: rgb(245 243 242 / 0.66);
+    --t-bg: #0E1224;
+    --t-fg: #E8E6F0;
+    --t-dim: #8A88A8;
+    --t-card: rgb(255 255 255 / 0.035);
+    --t-line: rgb(255 255 255 / 0.08);
+    --t-red: #FF5C7A;
+    --t-green: #3FD98A;
+    --t-yellow: #F7B13C;
+    --t-blue: #389EFF;
+    --t-accent: #C75CEB;
+    --t-chrome: #0A0D1C;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font: 16px/1.5 var(--sans);
+    color: var(--fg);
+    background: linear-gradient(160deg, #0E1224 0, #131530 55%, #170F31 100%);
+    -webkit-font-smoothing: antialiased;
+  }
+  .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+  .glow.a { right: -120px; top: -80px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgb(199 92 235 / 0.30), transparent); }
+  .glow.b { left: -220px; bottom: -320px; width: 700px; height: 700px; background: radial-gradient(closest-side, rgb(56 158 255 / 0.12), transparent); }
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 80% at 30% 50%, #000 20%, transparent 75%);
+  }
+  .copy { position: absolute; left: 72px; top: 0; bottom: 0; width: 520px; display: flex; flex-direction: column; justify-content: center; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; font: 600 22px var(--sans); letter-spacing: -0.01em; }
+  .brand img { width: 44px; height: 44px; border-radius: 10px; }
+  .eyebrow { margin: 0 0 18px; font: 500 17px/1.4 var(--mono); color: var(--dim); }
+  .eyebrow b { color: #6BE6A6; font-weight: 700; margin-right: 8px; }
+  h1 { margin: 0; font: 700 74px/1.04 var(--mono); letter-spacing: -0.045em; }
+  .cursor { display: inline-block; width: 0.52em; height: 0.86em; margin-left: 0.12em; vertical-align: -0.08em; border-radius: 3px; background: #FF5189; }
+  .meta { margin: 34px 0 0; font: 17px var(--mono); color: var(--dim); }
+  .meta span + span::before { content: "·"; margin: 0 10px; }
+  .meta .url { color: var(--fg); }
+
+  .term {
+    position: absolute;
+    left: 626px;
+    top: 74px;
+    width: 516px;
+    height: 482px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--t-chrome);
+    color: var(--t-fg);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1), 0 40px 90px rgb(0 0 0 / 0.55), 0 0 100px rgb(199 92 235 / 0.2);
+  }
+  .term::before { content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--t-accent), transparent); }
+  .bar { flex: none; display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; font: 600 14px var(--sans); }
+  .bar i { width: 12px; height: 12px; border-radius: 50%; background: rgb(128 128 140 / 0.45); }
+  .bar b { margin-left: 12px; font-weight: 600; }
+  .bar em { margin-left: auto; font-style: normal; font-weight: 500; font-size: 13px; color: var(--t-dim); }
+  .cards { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; margin: 0 8px; padding: 14px 14px 10px; border-radius: 11px 11px 0 0; background: var(--t-bg); overflow: hidden; }
+  .card { flex: none; border-radius: 8px; background: var(--t-card); box-shadow: inset 0 0 0 1px var(--t-line); font: 14px/1.5 var(--mono); }
+  .card.fail { background: color-mix(in srgb, var(--t-red) 7%, var(--t-card)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t-red) 45%, transparent), inset 3px 0 0 var(--t-red); }
+  .head { display: flex; align-items: center; gap: 10px; padding: 6px 12px 3px; }
+  .cmd { font-weight: 700; color: var(--t-accent); }
+  .cmd span { color: var(--t-fg); font-weight: 600; }
+  .m { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font: 12px var(--sans); color: var(--t-dim); }
+  .pill { padding: 1px 8px; border-radius: 5px; font-weight: 600; }
+  .ok { color: var(--t-green); background: color-mix(in srgb, var(--t-green) 14%, transparent); }
+  .bad { color: var(--t-red); background: color-mix(in srgb, var(--t-red) 14%, transparent); }
+  pre { margin: 0; padding: 0 12px 8px; font: inherit; white-space: pre; }
+  .r { color: var(--t-red); } .g { color: var(--t-green); } .y { color: var(--t-yellow); } .b { color: var(--t-blue); font-weight: 600; } .d { color: var(--t-dim); }
+  .cmp { flex: none; margin: 0 8px 8px; padding: 10px; border-radius: 0 0 11px 11px; background: var(--t-bg); }
+  .fail-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 5px 6px 5px 10px; border-radius: 7px; font: 13px var(--sans); background: color-mix(in srgb, var(--t-red) 14%, transparent); }
+  .fail-bar .x { color: var(--t-red); }
+  .explain { margin-left: auto; padding: 3px 10px; border-radius: 5px; font-weight: 600; color: var(--t-accent); background: color-mix(in srgb, var(--t-accent) 16%, transparent); }
+  .field { height: 44px; padding: 0 14px; border-radius: 9px; font: 15px/44px var(--mono); color: var(--t-fg); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--t-accent) 70%, transparent), 0 0 0 4px color-mix(in srgb, var(--t-accent) 14%, transparent); background: color-mix(in srgb, var(--t-fg) 4%, transparent); }
+  .field .ph { color: var(--t-dim); }
+  .field .caret { display: inline-block; width: 2px; height: 18px; margin-right: 2px; vertical-align: -3px; background: var(--t-accent); }
+</style>
+</head>
+<body>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+  <div class="grid"></div>
+
+  <div class="copy">
+    <div class="brand"><img src="../icon.png" alt="" /><span>Cue</span></div>
+    <p class="eyebrow"><b>~</b>A native macOS terminal</p>
+    <h1>Commands in.<br />Cards out.<span class="cursor"></span></h1>
+    <p class="meta"><span>Free</span><span>zsh, bash, fish</span><span class="url">cue.coursion.studio</span></p>
+  </div>
+
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><b>orbit</b><em>Forge Night</em></div>
+    <div class="cards">
+      <div class="card">
+        <div class="head"><span class="cmd">ls</span><span class="m">~/Projects/orbit<span class="pill ok">✓ 25ms</span></span></div>
+        <pre>Makefile      README.md    <span class="b">src</span>
+package.json  <span class="b">scripts</span>      <span class="b">tests</span></pre>
+      </div>
+      <div class="card">
+        <div class="head"><span class="cmd">git <span>status -sb</span></span><span class="m">~/Projects/orbit<span class="pill ok">✓ 32ms</span></span></div>
+        <pre><span class="g">## main</span>
+ <span class="r">M</span> src/api.ts
+<span class="r">??</span> src/cache.ts</pre>
+      </div>
+      <div class="card fail">
+        <div class="head"><span class="cmd">make <span>test</span></span><span class="m">~/Projects/orbit<span class="pill bad">✕ exit 2 1.4s</span></span></div>
+        <pre><span class="d">orbit@1.3.2 test</span>
+ <span class="g">✓</span> config  parses orbit.toml <span class="d">(4 ms)</span>
+ <span class="g">✓</span> api     retries on 503 <span class="d">(212 ms)</span>
+ <span class="r">✗</span> cache   expires stale entries <span class="d">(1003 ms)</span>
+
+Tests: <span class="r">1 failed</span>, <span class="g">3 passed</span>, 4 total</pre>
+      </div>
+    </div>
+    <div class="cmp">
+      <div class="fail-bar"><span class="x">✕</span><span>exit 2 · make test</span><span class="explain">✦ Explain</span></div>
+      <div class="field"><span class="caret"></span><span class="ph">Run a command, or type / for actions</span></div>
+    </div>
+  </div>
+</body>
+</html>

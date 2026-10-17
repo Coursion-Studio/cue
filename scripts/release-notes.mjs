@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -86,6 +87,10 @@ function stylesheets() {
   return links.map((l) => `  ${l}`).join("\n");
 }
 
+function version(file) {
+  return createHash("sha1").update(readFileSync(join(root, file))).digest("hex").slice(0, 10);
+}
+
 function page(releases) {
   const latest = releases[0];
   const articles = releases.map((r, i) => {
@@ -118,7 +123,7 @@ ${stylesheets()}
   <meta property="og:url" content="https://cue.coursion.studio/releases.html" />
   <meta property="og:title" content="Release notes — Cue" />
   <meta property="og:description" content="What changed in each version of Cue. Latest: ${escapeHTML(latest.version)}." />
-  <meta property="og:image" content="https://cue.coursion.studio/og.jpg" />
+  <meta property="og:image" content="https://cue.coursion.studio/og.jpg?v=${version("og.jpg")}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0E1224" />
 </head>
