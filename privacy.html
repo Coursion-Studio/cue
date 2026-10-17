@@ -26,12 +26,12 @@
     <main class="legal">
       <p class="eyebrow">Privacy</p>
       <h1>Cue collects nothing.</h1>
-      <p class="updated">Last updated 16 October 2026</p>
+      <p class="updated">Last updated 17 October 2026</p>
       <p class="lede">Cue has no analytics, no telemetry, no crash reporting service and no account. It never builds a profile of you. What you type, what your commands print and what is in your files stay on your Mac. Cue only uses the network in the two cases below.</p>
 
       <section>
         <h2>1. Checking for updates</h2>
-        <p>Cue uses Sparkle to look for new versions. Once a day, and when you choose <b>Check for Updates…</b>, it requests <code>https://coursion-studio.github.io/cue/appcast.xml</code>. That is a standard Sparkle request: it carries the app's version and your macOS version, and like any web request it reveals your IP address to the host. Cue does not send Sparkle's optional system profile, and the request carries nothing about you or what you do in Cue.</p>
+        <p>Cue uses Sparkle to look for new versions. Once a day, and when you choose <b>Check for Updates…</b>, it requests <code>https://cue.coursion.studio/appcast.xml</code>. Versions up to 0.4.1 ask for the older address, <code>https://coursion-studio.github.io/cue/appcast.xml</code>, which redirects to the same file. That is a standard Sparkle request: it carries the app's version and your macOS version, and like any web request it reveals your IP address to the host. Cue does not send Sparkle's optional system profile, and the request carries nothing about you or what you do in Cue.</p>
         <p>The feed is a static file on GitHub Pages and new versions download from GitHub Releases. We don't run a server that sees these requests.</p>
       </section>
 
