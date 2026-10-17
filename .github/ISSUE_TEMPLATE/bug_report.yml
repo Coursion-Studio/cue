@@ -1,0 +1,89 @@
+name: Bug report
+description: Something in Cue doesn't work the way it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Please check that you're on the latest version first (Cue → Check for Updates…).
+  - type: input
+    id: version
+    attributes:
+      label: Cue version
+      description: Open Cue → About Cue and copy the version and build.
+      placeholder: 0.4.1 (6)
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      description: Apple menu → About This Mac.
+      placeholder: macOS 15.5
+    validations:
+      required: true
+  - type: dropdown
+    id: mac
+    attributes:
+      label: Mac
+      options:
+        - Apple silicon (M1 or later)
+        - Intel
+    validations:
+      required: true
+  - type: dropdown
+    id: shell
+    attributes:
+      label: Shell
+      options:
+        - zsh
+        - bash
+        - fish
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      description: Composer is the input bar with command cards. Classic is the plain terminal grid.
+      options:
+        - Composer
+        - Classic
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The commands you ran and what you clicked or typed, in order. Leave out tokens, passwords and other secrets.
+      placeholder: |
+        1. Open a new tab in ~/Projects/my-app
+        2. Run `npm test`
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Include any error text exactly as shown.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or recordings
+      description: Drag images or a screen recording here. Check them for secrets first.
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Your prompt theme or framework (Powerlevel10k, Starship, oh-my-zsh), the Cue theme, or anything else that might matter.

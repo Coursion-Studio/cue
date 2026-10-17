@@ -153,6 +153,7 @@ ${articles}
           <a href="./">Home</a>
           <a href="./#download">Download</a>
           <a href="privacy.html">Privacy</a>
+          <a href="${repo}/issues/new/choose">Feedback and bugs</a>
           <a href="https://coursion.studio">Coursion Studio</a>
         </nav>
       </div>

@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest something Cue could do, or do better.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The task or the moment where Cue gets in your way, or falls short.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+      description: How you picture it working. Sketches and screenshots are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How do you handle it today?
+      description: A workaround, another terminal or a tool that already does this.
+  - type: input
+    id: version
+    attributes:
+      label: Cue version
+      description: Cue → About Cue.
+      placeholder: 0.4.1 (6)

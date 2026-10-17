@@ -56,6 +56,10 @@ Get the latest DMG from [Releases](https://github.com/Coursion-Studio/cue/releas
 
 Cue updates itself through [Sparkle](https://sparkle-project.org/): it checks once a day, and you can choose **Check for Updates…** in the Cue menu. Release notes are on the [website](https://cue.coursion.studio/releases.html), and every download is on the [Releases](https://github.com/Coursion-Studio/cue/releases) page.
 
+## Feedback and bugs
+
+Found a bug or have an idea? [Open an issue](https://github.com/Coursion-Studio/cue/issues/new/choose) and pick a template.
+
 ## Privacy
 
 Cue has no analytics, telemetry or account. See the [privacy page](https://cue.coursion.studio/privacy.html) for the two cases where it uses the network.

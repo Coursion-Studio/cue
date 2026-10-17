@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Cue website
+    url: https://cue.coursion.studio/
+    about: Downloads, features and the privacy page.
+  - name: Release notes
+    url: https://cue.coursion.studio/releases.html
+    about: Check whether your issue is already fixed in a newer version.
