@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
-  <link rel="stylesheet" href="cue.css?v=15d2f838bf" />
+  <link rel="stylesheet" href="cue.css?v=8acb8a38bc" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cue" />
   <meta property="og:url" content="https://cue.coursion.studio/" />
@@ -39,8 +39,7 @@
   <script>
     window.STAGE = {
       download: "https://github.com/Coursion-Studio/cue/releases/latest/download/Cue.dmg",
-      palette: "forge",
-      keyboard: { idle: ["controlL", "r"] }
+      palette: "forge"
     };
   </script>
   <script defer src="stage.js?v=bda7026e0e"></script>
@@ -186,93 +185,78 @@
       </div>
     </section>
 
-    <section id="output" class="sec reveal" aria-labelledby="output-title">
+    <section id="output" class="sec calm reveal" aria-labelledby="output-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="shot-pair">
-          <figure class="shot rise" style="--d:.04s"><picture><source srcset="screenshots/fold.webp" type="image/webp" /><img src="screenshots/fold.png" alt="Six Cue command cards, five folded to a single line that says how many lines are hidden and one failing make test left open" width="920" height="600" loading="lazy" decoding="async" /></picture><figcaption><b>Fold</b> a card to one line. Anything over 200 lines opens trimmed.</figcaption></figure>
-          <figure class="shot rise" style="--d:.1s"><picture><source srcset="screenshots/find.webp" type="image/webp" /><img src="screenshots/find.png" alt="Find in Cue output: the query .test. highlights five matches across the npm test card, the current match in purple" width="920" height="600" loading="lazy" decoding="async" /></picture><figcaption><b>Find</b> across the pane, one card, or failed cards only.</figcaption></figure>
+        <div class="sec-head center calm-head">
+          <h2 id="output-title" class="rise">Long output, under control</h2>
+          <p class="rise" style="--d:.06s">Fold a card to one line, or search the pane, one card or just the failures. Quit whenever you like: Cue reopens your windows, tabs and splits where you left them.</p>
         </div>
-        <div class="sec-head center">
-          <h2 id="output-title" class="rise" style="--d:.08s">Long output, under control</h2>
-          <p class="rise" style="--d:.14s">Collapse every card with <span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>←</kbd></span>, search with <span class="combo"><kbd>⌘</kbd><kbd>F</kbd></span> and step with <span class="combo"><kbd>⌘</kbd><kbd>G</kbd></span>. Quit and come back: Cue reopens your windows, tabs and splits where you left them, with the last lines of each pane above a "Restored from" line.</p>
+        <div class="shot-pair">
+          <figure class="shot rise" style="--d:.1s"><picture><source srcset="screenshots/fold.webp" type="image/webp" /><img src="screenshots/fold.png" alt="Six Cue command cards, five folded to a single line that says how many lines are hidden and one failing make test left open" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="shot rise" style="--d:.16s"><picture><source srcset="screenshots/find.webp" type="image/webp" /><img src="screenshots/find.png" alt="Find in Cue output: the query .test. highlights five matches across the npm test card, the current match in purple" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
         </div>
       </div>
     </section>
 
-    <section id="share" class="sec reveal" aria-labelledby="share-title">
+    <section id="keys" class="sec calm reveal" aria-labelledby="keys-title">
+      <div class="container">
+        <div class="sec-head center calm-head">
+          <h2 id="keys-title" class="rise">Your own Claude, one keystroke away</h2>
+          <p class="rise" style="--d:.06s">Ask it to explain an error, fix the last command, or write the one you describe. The rest of Cue is just as close.</p>
+        </div>
+        <ul class="keys-grid">
+          <li class="ai rise" style="--d:.08s"><span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>E</kbd></span><span>Explain the last error</span></li>
+          <li class="ai rise" style="--d:.1s"><span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>F</kbd></span><span>Fix the last command</span></li>
+          <li class="ai rise" style="--d:.12s"><span class="combo"><kbd>⌘</kbd><kbd>I</kbd></span><span>Ask for a command</span></li>
+          <li class="rise" style="--d:.14s"><span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span><span>Command palette</span></li>
+          <li class="rise" style="--d:.16s"><span class="combo"><kbd>⌃</kbd><kbd>`</kbd></span><span>Quick Terminal</span></li>
+          <li class="rise" style="--d:.18s"><span class="combo"><kbd>⌃</kbd><kbd>R</kbd></span><span>Search your history</span></li>
+          <li class="rise" style="--d:.2s"><span class="combo"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd></span><span>Snippets</span></li>
+          <li class="rise" style="--d:.22s"><span class="combo"><kbd>⌘</kbd><kbd>D</kbd></span><span>Split the pane</span></li>
+        </ul>
+        <p class="keys-trust rise" style="--d:.24s"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg><span>Claude runs on your Anthropic key, kept in the Keychain, or on the <code>claude</code> CLI you already use. Secrets are redacted first, and nothing passes through us. <a href="privacy.html">Privacy</a></span></p>
+      </div>
+    </section>
+
+    <section id="share" class="sec calm reveal" aria-labelledby="share-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="sec-head center share-head">
+        <div class="sec-head center calm-head">
           <h2 id="share-title" class="rise">Share a command as an image</h2>
-          <p class="rise" style="--d:.06s">Any card becomes a PNG: the command, its status, the folder and the colored output, in your theme's window on a gradient, the theme or nothing at all. Secrets are redacted before you copy it.</p>
+          <p class="rise" style="--d:.06s">Any card becomes a PNG of the command, its status and its colored output, in your theme. Secrets are redacted before you copy it.</p>
         </div>
         <div class="share-strip" role="list">
-          <figure class="share-card rise" role="listitem" style="--d:.06s"><picture><source srcset="screenshots/share-latte.webp" type="image/webp" /><img src="screenshots/share-latte.png" alt="A Share as Image PNG of npm test in Catppuccin Latte: ten passing tests in a light window on a pink and purple gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
-          <figure class="share-card rise" role="listitem" style="--d:.12s"><picture><source srcset="screenshots/share-forge-night.webp" type="image/webp" /><img src="screenshots/share-forge-night.png" alt="A Share as Image PNG of npm test in Forge Night: ten passing tests in a dark window on a pink to blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
-          <figure class="share-card rise" role="listitem" style="--d:.18s"><picture><source srcset="screenshots/share-tokyo-night.webp" type="image/webp" /><img src="screenshots/share-tokyo-night.png" alt="A Share as Image PNG of npm test in Tokyo Night: ten passing tests on a purple and blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
-        </div>
-        <p class="share-note rise" style="--d:.2s">Those are straight out of Cue, untouched.</p>
-      </div>
-    </section>
-
-    <section id="ai" class="sec reveal" aria-labelledby="ai-title">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="sec-head center">
-          <h2 id="ai-title" class="rise">Your own Claude, one keystroke away</h2>
-          <p class="rise" style="--d:.06s">Explain the last error with <span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>E</kbd></span>, fix the last command with <span class="combo"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>F</kbd></span>, or describe what you want with <span class="combo"><kbd>⌘</kbd><kbd>I</kbd></span> and get a command back.</p>
-        </div>
-        <ul class="trust ai-trust">
-          <li class="rise" style="--d:.08s"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-key"/></svg></span><b>Your key or your CLI</b><span>Use an Anthropic API key, kept in the macOS Keychain, or the <code>claude</code> CLI you already sign in to.</span></li>
-          <li class="rise" style="--d:.12s"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><b>Secrets stay out</b><span>Tokens, passwords and keys in a command or its output are redacted before anything is sent.</span></li>
-          <li class="rise" style="--d:.16s"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-direct"/></svg></span><b>Nothing in between</b><span>Requests go from your Mac straight to Anthropic, or through your local <code>claude</code>. No account, no server of ours.</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="keys" class="sec reveal" data-stage="keyboard" aria-labelledby="keys-title">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="kb-stage rise"><div class="kb" aria-hidden="true"></div></div>
-        <div class="sec-head center">
-          <h2 id="keys-title" class="rise" style="--d:.08s">Keys you'll reach for</h2>
-          <p class="rise" style="--d:.14s"><span class="combo"><kbd>⌃</kbd><kbd>R</kbd></span> history, <span class="combo"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd></span> snippets, <span class="combo"><kbd>⌘</kbd><kbd>T</kbd></span> a new tab, <span class="combo"><kbd>⌘</kbd><kbd>D</kbd></span> a split, <span class="combo"><kbd>⌘</kbd><kbd>B</kbd></span> folds the sidebar, <span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span> opens the palette.</p>
-          <p class="kb-pill rise" style="--d:.2s" aria-live="polite">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="kb-text" data-touch="On a Mac, these keys light up as you type.">Type on your keyboard. The keys light up with yours.</span>
-            <span class="kb-pill-keys kb-keys"></span>
-          </p>
+          <figure class="share-card rise" role="listitem" style="--d:.08s"><picture><source srcset="screenshots/share-latte.webp" type="image/webp" /><img src="screenshots/share-latte.png" alt="A Share as Image PNG of npm test in Catppuccin Latte: ten passing tests in a light window on a pink and purple gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="share-card rise" role="listitem" style="--d:.14s"><picture><source srcset="screenshots/share-forge-night.webp" type="image/webp" /><img src="screenshots/share-forge-night.png" alt="A Share as Image PNG of npm test in Forge Night: ten passing tests in a dark window on a pink to blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="share-card rise" role="listitem" style="--d:.2s"><picture><source srcset="screenshots/share-tokyo-night.webp" type="image/webp" /><img src="screenshots/share-tokyo-night.png" alt="A Share as Image PNG of npm test in Tokyo Night: ten passing tests on a purple and blue gradient" width="528" height="608" loading="lazy" decoding="async" /></picture></figure>
         </div>
       </div>
     </section>
 
-    <section id="themes" class="sec reveal" aria-labelledby="themes-title">
-      <div class="glow" aria-hidden="true"></div>
+    <section id="themes" class="sec calm reveal" aria-labelledby="themes-title">
       <div class="container">
+        <div class="sec-head center calm-head">
+          <h2 id="themes-title" class="rise">Make it look like yours</h2>
+          <p class="rise" style="--d:.06s">Eighteen themes with a live preview. Tabs in a sidebar or along the top, and as many splits as you need.</p>
+        </div>
         <div class="theme-pair">
-          <figure class="shot back rise" style="--d:.04s"><picture><source srcset="screenshots/theme-latte.webp" type="image/webp" /><img src="screenshots/theme-latte.png" alt="Cue in the Catppuccin Latte light theme with command cards, some folded" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
-          <figure class="shot front rise" style="--d:.1s"><picture><source srcset="screenshots/theme-tokyo-night.webp" type="image/webp" /><img src="screenshots/theme-tokyo-night.png" alt="Cue in the Tokyo Night theme with tabs along the top" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
-        </div>
-        <div class="sec-head center">
-          <h2 id="themes-title" class="rise" style="--d:.08s">Make it look like yours</h2>
-          <p class="rise" style="--d:.14s">Pick from eighteen themes with a live preview, or type <code>/theme</code>. Tabs go in a sidebar or along the top, and panes split as far as you need.</p>
-          <ul class="theme-chips rise" style="--d:.2s">
-            <li>Forge Night</li><li>Tokyo Night</li><li>Catppuccin</li><li>Rosé Pine</li><li>Dracula</li><li>Nord</li><li>and twelve more</li>
-          </ul>
+          <figure class="shot back rise" style="--d:.1s"><picture><source srcset="screenshots/theme-latte.webp" type="image/webp" /><img src="screenshots/theme-latte.png" alt="Cue in the Catppuccin Latte light theme with command cards, some folded" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+          <figure class="shot front rise" style="--d:.16s"><picture><source srcset="screenshots/theme-tokyo-night.webp" type="image/webp" /><img src="screenshots/theme-tokyo-night.png" alt="Cue in the Tokyo Night theme with tabs along the top" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
         </div>
       </div>
     </section>
 
-    <div class="container">
-      <section id="download" class="cta-band">
-        <img class="cta-icon" src="icon.png" alt="" width="72" height="72" loading="lazy" />
-        <h2>Open a new tab.</h2>
-        <p class="lede">Cue is free. No account, no trial, no tracking. It updates itself when a new version ships.</p>
-        <div class="cta-row">
+    <section id="download" class="sec close reveal" aria-labelledby="download-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <img class="close-icon rise" src="icon.png" alt="" width="64" height="64" loading="lazy" />
+        <h2 id="download-title" class="close-title rise" style="--d:.04s">Open a new tab.<span class="hero-cursor" aria-hidden="true"></span></h2>
+        <p class="close-lede rise" style="--d:.08s">Free, with no account, no trial and no tracking. Cue updates itself.</p>
+        <div class="close-cta rise" style="--d:.12s">
           <a class="btn primary" href="https://github.com/Coursion-Studio/cue/releases/latest/download/Cue.dmg" data-download>
             <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/></svg>
-            Download for Mac
+            Download for macOS
           </a>
           <div class="brew" data-copy="brew install --cask coursion-studio/tools/cue">
             <span class="brew-prompt" aria-hidden="true">$</span>
@@ -280,21 +264,25 @@
             <button class="brew-copy" type="button" aria-label="Copy the Homebrew command"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
           </div>
         </div>
-        <p class="req-note">Free · macOS 15 Sequoia or later · Apple silicon · Developer ID signed and notarized</p>
-      </section>
-    </div>
+        <ul class="hero-meta close-meta rise" style="--d:.16s">
+          <li><a href="https://github.com/Coursion-Studio/cue/releases/tag/v0.4.1">Version 0.4.1</a></li>
+          <li>macOS 15 or later</li>
+          <li>Apple silicon</li>
+          <li>Signed and notarized</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <div class="container">
-    <footer>
-      <div class="links">
-        <a href="#download">Download</a>
+  <footer class="foot">
+    <div class="container foot-row">
+      <p class="foot-brand"><img src="icon.png" alt="" width="20" height="20" loading="lazy" /><span>© 2026 Coursion Studio</span></p>
+      <nav class="foot-links" aria-label="Footer">
         <a href="https://github.com/Coursion-Studio/cue/releases">Release notes</a>
         <a href="privacy.html">Privacy</a>
         <a href="https://coursion.studio">Coursion Studio</a>
-      </div>
-      <div>© 2026 <a href="https://coursion.studio">Coursion Studio</a></div>
-    </footer>
-  </div>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
