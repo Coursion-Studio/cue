@@ -4,7 +4,7 @@ A native macOS terminal with a real input bar, where every command comes back as
 
 ![Cue with three command cards: git status, ls, and a failing make test with exit 2 and an Explain button above the composer](screenshots/command-cards.png)
 
-**Website:** [coursion-studio.github.io/cue](https://coursion-studio.github.io/cue/)
+**Website:** [cue.coursion.studio](https://cue.coursion.studio/)
 
 > This repository holds Cue's website, its Sparkle update feed (`appcast.xml`) and the release downloads. The app's source code is not in this repository.
 
@@ -58,7 +58,7 @@ Cue updates itself through [Sparkle](https://sparkle-project.org/): it checks on
 
 ## Privacy
 
-Cue has no analytics, telemetry or account. See the [privacy page](https://coursion-studio.github.io/cue/privacy.html) for the two cases where it uses the network.
+Cue has no analytics, telemetry or account. See the [privacy page](https://cue.coursion.studio/privacy.html) for the two cases where it uses the network.
 
 ---
 
