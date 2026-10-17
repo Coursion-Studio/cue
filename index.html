@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
-  <link rel="stylesheet" href="cue.css?v=8acb8a38bc" />
+  <link rel="stylesheet" href="cue.css?v=d72d0d8757" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cue" />
   <meta property="og:url" content="https://cue.coursion.studio/" />
@@ -124,13 +124,13 @@
   </header>
 
   <main>
-    <section id="cards" class="sec sec-split reveal" aria-labelledby="cards-title">
+    <section id="cards" class="sec sec-split calm reveal" aria-labelledby="cards-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container split">
         <div class="split-copy">
           <h2 id="cards-title" class="rise">Every command is a card</h2>
-          <p class="rise" style="--d:.06s">Output stays with the command that printed it, with its exit code and how long it took. A failed run turns red, and one click asks Claude why.</p>
-          <p class="aside rise" style="--d:.1s">Copy the command or the output, run it again, or explain the failure.</p>
+          <p class="rise" style="--d:.06s">Output stays with the command that printed it, with its exit code and how long it took.</p>
+          <p class="rise" style="--d:.1s">Copy it, run it again, or let Claude explain why it failed.</p>
         </div>
         <div class="split-stage">
           <figure class="shot rise" style="--d:.08s">
@@ -140,13 +140,12 @@
       </div>
     </section>
 
-    <section id="input" class="sec sec-split reveal" aria-labelledby="input-title">
-      <div class="glow" aria-hidden="true"></div>
+    <section id="input" class="sec sec-split calm reveal" aria-labelledby="input-title">
       <div class="container split reverse">
         <div class="split-copy">
           <h2 id="input-title" class="rise">Programs that ask get a field</h2>
-          <p class="rise" style="--d:.06s">When a script stops to ask a yes or no, or a password, the composer turns into a question field with the answers it expects. Passwords stay hidden as you type.</p>
-          <p class="aside rise" style="--d:.1s"><kbd>Esc</kbd> hands the keys back to the terminal whenever you want them.</p>
+          <p class="rise" style="--d:.06s">When a script wants a yes or no, or a password, the composer becomes a question field. Passwords stay hidden.</p>
+          <p class="rise" style="--d:.1s"><span class="k">Esc</span> hands the keys back to the terminal.</p>
         </div>
         <div class="split-stage">
           <figure class="shot rise" style="--d:.08s">
@@ -156,28 +155,33 @@
       </div>
     </section>
 
-    <section id="palette" class="sec reveal" aria-labelledby="palette-title">
+    <section id="palette" class="sec calm reveal" aria-labelledby="palette-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="qt-stack">
-          <figure class="shot qt rise" style="--d:.04s"><picture><source srcset="screenshots/quick-terminal.webp" type="image/webp" /><img src="screenshots/quick-terminal.png" alt="The Cue Quick Terminal: a wide panel at the top of the screen showing a git log graph and git status for the orbit project, with the composer at its foot" width="1240" height="480" loading="lazy" decoding="async" /></picture></figure>
-          <figure class="shot pal rise" style="--d:.1s"><picture><source srcset="screenshots/palette.webp" type="image/webp" /><img src="screenshots/palette.png" alt="The Cue command palette searching for run: the Run Task slash command and every task of the orbit project, from dev to typecheck" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
+        <div class="sec-head center calm-head">
+          <h2 id="palette-title" class="rise">One palette for everything</h2>
+          <p class="rise" style="--d:.06s"><span class="k">⌘K</span> finds any menu command, slash command, tab, theme, snippet or recent folder, the ones you use most first. Themes preview as you pass them, and <span class="k">&gt;</span> searches your history.</p>
         </div>
-        <div class="sec-head center">
-          <h2 id="palette-title" class="rise" style="--d:.08s">One palette, and a terminal from anywhere</h2>
-          <p class="rise" style="--d:.14s"><span class="combo"><kbd>⌘</kbd><kbd>K</kbd></span> finds every menu command, slash command, tab, theme, snippet and recent folder, with the ones you use most first. Themes preview as you arrow past them, and <kbd>&gt;</kbd> searches your history.</p>
-          <p class="aside rise" style="--d:.2s"><span class="combo"><kbd>⌃</kbd><kbd>`</kbd></span> slides a Quick Terminal down over whatever app you are in, and it keeps its session between visits. Press it again, or <kbd>Esc</kbd> on an empty prompt, to put it away.</p>
-        </div>
+        <figure class="shot solo rise" style="--d:.1s"><picture><source srcset="screenshots/palette.webp" type="image/webp" /><img src="screenshots/palette.png" alt="The Cue command palette searching for run: the Run Task slash command and every task of the orbit project, from dev to typecheck" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>
       </div>
     </section>
 
-    <section id="projects" class="sec sec-split reveal" aria-labelledby="projects-title">
-      <div class="glow" aria-hidden="true"></div>
+    <section id="quick" class="sec calm reveal" aria-labelledby="quick-title">
+      <div class="container">
+        <div class="sec-head center calm-head">
+          <h2 id="quick-title" class="rise">A terminal from anywhere</h2>
+          <p class="rise" style="--d:.06s">Press <span class="k">⌃`</span> in any app and a Quick Terminal slides down, with its session as you left it. Press it again, or <span class="k">Esc</span> on an empty prompt, to put it away.</p>
+        </div>
+        <figure class="shot wide qt rise" style="--d:.1s"><picture><source srcset="screenshots/quick-terminal.webp" type="image/webp" /><img src="screenshots/quick-terminal.png" alt="The Cue Quick Terminal: a wide panel at the top of the screen showing a git log graph and git status for the orbit project, with the composer at its foot" width="1240" height="480" loading="lazy" decoding="async" /></picture></figure>
+      </div>
+    </section>
+
+    <section id="projects" class="sec sec-split calm reveal" aria-labelledby="projects-title">
       <div class="container split">
         <div class="split-copy">
           <h2 id="projects-title" class="rise">It knows what project you're in</h2>
-          <p class="rise" style="--d:.06s">Node, Swift, Rust, Go, Python, Make, just or Docker Compose: a chip in the composer opens the project's tasks, with its branch and changes beside them. <kbd>⏎</kbd> puts a task in the composer, <span class="combo"><kbd>⌘</kbd><kbd>⏎</kbd></span> runs it.</p>
-          <p class="aside rise" style="--d:.1s">Pull, push, switch branch and stash are one click away, and they only fill in the command. A quiet chip warns when your node or python doesn't match <code>.nvmrc</code> or <code>.python-version</code>.</p>
+          <p class="rise" style="--d:.06s">Node, Swift, Rust, Go, Python, Make, just or Docker Compose: one chip opens the project's tasks and its git state. <span class="k">Return</span> fills in a task, <span class="k">⌘Return</span> runs it.</p>
+          <p class="rise" style="--d:.1s">Pull, push, switch and stash fill in their command for you to run. A quiet chip warns when node or python doesn't match the project.</p>
         </div>
         <div class="split-stage">
           <figure class="shot rise" style="--d:.08s"><picture><source srcset="screenshots/project-panel.webp" type="image/webp" /><img src="screenshots/project-panel.png" alt="The Cue Project panel for orbit: npm and Make detected, a warning that node 22 differs from .nvmrc 20.18.0, the project tasks, and the main branch one commit ahead with three changes and Pull, Push, Switch and Stash buttons" width="920" height="600" loading="lazy" decoding="async" /></picture></figure>

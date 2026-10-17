@@ -310,12 +310,13 @@ code:not([class]) {
 
 
 picture { display: block; }
-.sec-head .aside { margin-top: 14px; font-size: 15.5px; color: var(--text-tertiary); }
 
-.qt-stack { width: min(960px, 100%); margin: 0 auto; }
-.qt-stack .qt { position: relative; z-index: 1; width: 100%; }
-.qt-stack .qt img { border-radius: 0 0 14px 14px; }
-.qt-stack .pal { position: relative; z-index: 2; width: 62%; margin: -2% 5% 0 auto; }
+.shot.solo { width: min(920px, 100%); margin: 0 auto; }
+.shot.wide { width: min(1080px, 100%); margin: 0 auto; }
+.shot.qt img { border-radius: 0 0 14px 14px; }
+.calm .split { gap: 72px; }
+.calm .split-copy p + p { margin-top: 16px; }
+main .k { font: 500 0.88em var(--mono); color: var(--text-primary); white-space: nowrap; }
 
 .shot-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; width: min(1080px, 100%); margin: 0 auto; }
 
@@ -363,6 +364,7 @@ footer.foot { padding: 0; font-size: 14px; text-align: left; color: var(--text-t
 .foot-links a:hover { color: var(--text-primary); }
 
 @media (max-width: 980px) {
+  .calm .split { gap: 44px; }
   .keys-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(640px, 100%); }
 }
 @media (max-width: 720px) {
@@ -408,7 +410,6 @@ footer.foot { padding: 0; font-size: 14px; text-align: left; color: var(--text-t
   .cmp-menu li b { min-width: 68px; font-size: 12px; }
   .theme-pair .back, .theme-pair .front { width: 86%; }
   .theme-pair .front { top: 16%; }
-  .qt-stack .pal { width: 88%; margin: -4% 0 0 auto; }
   .shot-pair { grid-template-columns: 1fr; gap: 36px; }
   .share-card { margin: 0 -10px; }
   .share-card:nth-child(1) picture, .share-card:nth-child(3) picture { transform: rotate(0) translateY(18px) scale(0.92); }
