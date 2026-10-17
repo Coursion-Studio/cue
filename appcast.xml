@@ -7,7 +7,20 @@
     <language>en</language>
   
     
+    
     <item>
+      <title>Version 0.4.1</title>
+      <pubDate>Sat, 17 Oct 2026 19:59:09 +0300</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul>
+<li><strong>Cards survive a resize.</strong> Switching between the tab sidebar and tabs on top, splitting a pane, resizing the window or changing the font no longer turns earlier command cards back into plain text; each card follows its lines when the terminal rewraps.</li>
+<li><strong>No more doubled commands.</strong> A command sent while the shell was still drawing its prompt (common with slow prompts like Powerlevel10k, gitstatus or nvm) could show up twice, and keys typed right after Return could end up glued to the next command. Cue now waits for the line editor before sending, and holds keys typed right after Return until it knows whether they belong to the composer or the running program.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/cue/releases/download/v0.4.1/Cue-0.4.1.dmg" type="application/octet-stream" sparkle:edSignature="5ff4zfXrfnNZ05XwC/HSD+5OfA3NAHlwnFmZ4g3v358x3YzPB2DLyljpEMDQEfzMPFCzDOrbCz7DJS2u8xm2BA==" length="6465632" />
+    </item>
+<item>
       <title>Version 0.4.0</title>
       <pubDate>Fri, 16 Oct 2026 21:52:14 +0300</pubDate>
       <sparkle:version>5</sparkle:version>
