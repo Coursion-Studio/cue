@@ -88,7 +88,7 @@ function stylesheets() {
 }
 
 function version(file) {
-  return createHash("sha1").update(readFileSync(join(root, file))).digest("hex").slice(0, 10);
+  return createHash("sha256").update(readFileSync(join(root, file))).digest("hex").slice(0, 10);
 }
 
 function page(releases) {
