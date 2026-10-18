@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Release notes — Cue</title>
-  <meta name="description" content="What changed in each version of Cue, the native macOS terminal. Latest: 0.4.1." />
+  <meta name="description" content="What changed in each version of Cue, the native macOS terminal. Latest: 0.5.0." />
   <link rel="canonical" href="https://cue.coursion.studio/releases.html" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Cue" />
   <meta property="og:url" content="https://cue.coursion.studio/releases.html" />
   <meta property="og:title" content="Release notes — Cue" />
-  <meta property="og:description" content="What changed in each version of Cue. Latest: 0.4.1." />
+  <meta property="og:description" content="What changed in each version of Cue. Latest: 0.5.0." />
   <meta property="og:image" content="https://cue.coursion.studio/og.jpg?v=ec727f9900" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0E1224" />
@@ -35,10 +35,27 @@
       <h1>What's new in Cue</h1>
       <p class="lede">Every version, newest first. Cue checks for updates once a day, or choose <b>Check for Updates…</b> in the Cue menu.</p>
 
+      <article class="release" id="v0.5.0" aria-labelledby="v0.5.0-title">
+        <header class="release-head">
+          <h2 id="v0.5.0-title"><a href="#v0.5.0">0.5.0</a></h2>
+          <span class="release-latest">Latest</span><time datetime="2026-10-18">18 October 2026</time>
+          <a class="release-link" href="https://github.com/Coursion-Studio/cue/releases/tag/v0.5.0">GitHub release</a>
+        </header>
+        <ul>
+        <li><strong>Claude Code, first-class.</strong> Cue recognises <code>claude</code> running in a pane: the composer steps aside so every key reaches it, no card is drawn over its screen, the tab shows a sparkle that pulses while Claude works and turns amber when it needs you, and you get a notification when it asks for input or finishes a long turn in a tab you&#x27;re not looking at. File → New Claude Pane (⇧⌘N) opens a native Claude pane next to your terminal: every tool call (Bash, Edit with a diff, Read, Grep, web, tasks) is a card with status, duration and output, permission requests become Allow / Deny cards under your own Claude settings, and each turn shows its time, cost and tokens.</li>
+        <li><strong>Cards over SSH.</strong> Turn on Settings → Input &amp; History → SSH → Command cards over SSH and <code>ssh host</code> keeps giving you cards, exit codes and durations for remote commands, labelled <code>user@host:path</code>, with the composer driving the remote shell. Nothing is installed or left on the remote machine, and <code>ssh host cmd</code>, tunnels, scp, rsync and git over ssh are untouched. Hosts that already send their own prompt marks get cards with the setting off.</li>
+        <li><strong>Images in the terminal.</strong> iTerm2 inline images, Sixel and the kitty graphics protocol, so <code>imgcat</code>, <code>chafa</code>, <code>timg</code>, <code>img2sixel</code>, <code>kitten icat</code> and yazi previews show pictures. Images stay inside their card, survive folding and resizing, and are skipped by find. Per-image and per-session memory limits apply, and kitty can&#x27;t make Cue read arbitrary files.</li>
+        <li><strong>Typing is instant again.</strong> With a large shell history every keystroke used to rescan all of it; suggestions and history completions now come from an index and stay under a millisecond per key.</li>
+        <li><strong>Slow prompts no longer double a command.</strong> If your prompt takes longer than a few seconds, Cue now waits until the shell is actually idle before sending, instead of giving up after 4 s.</li>
+        <li><strong>Intel Macs.</strong> Cue is now a universal app.</li>
+        <li><strong>Saved layouts.</strong> File → Save Layout… keeps a window&#x27;s tabs, splits and folders, with an optional startup command per pane, and File → Open Layout (or ⌘K → Layouts, or <code>/layout &lt;name&gt;</code>) brings it back in a new window or adds it to the current one. Rename and delete from the same menu. A project can check in its own <code>cue.layout.json</code> (or <code>.cue/layout.json</code>) with folders relative to its root: ⌘K, the welcome screen and <code>/layout project</code> offer it, and Cue asks before running its commands the first time and again whenever the file changes.</li>
+        </ul>
+      </article>
+
       <article class="release" id="v0.4.1" aria-labelledby="v0.4.1-title">
         <header class="release-head">
           <h2 id="v0.4.1-title"><a href="#v0.4.1">0.4.1</a></h2>
-          <span class="release-latest">Latest</span><time datetime="2026-10-17">17 October 2026</time>
+          <time datetime="2026-10-17">17 October 2026</time>
           <a class="release-link" href="https://github.com/Coursion-Studio/cue/releases/tag/v0.4.1">GitHub release</a>
         </header>
         <ul>

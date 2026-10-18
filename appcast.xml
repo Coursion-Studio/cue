@@ -8,7 +8,25 @@
   
     
     
+    
     <item>
+      <title>Version 0.5.0</title>
+      <pubDate>Sun, 18 Oct 2026 18:52:36 +0300</pubDate>
+      <sparkle:version>7</sparkle:version>
+      <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul>
+<li><strong>Claude Code, first-class.</strong> Cue recognises <code>claude</code> running in a pane: the composer steps aside so every key reaches it, no card is drawn over its screen, the tab shows a sparkle that pulses while Claude works and turns amber when it needs you, and you get a notification when it asks for input or finishes a long turn in a tab you&#x27;re not looking at. File → New Claude Pane (⇧⌘N) opens a native Claude pane next to your terminal: every tool call (Bash, Edit with a diff, Read, Grep, web, tasks) is a card with status, duration and output, permission requests become Allow / Deny cards under your own Claude settings, and each turn shows its time, cost and tokens.</li>
+<li><strong>Cards over SSH.</strong> Turn on Settings → Input &amp; History → SSH → Command cards over SSH and <code>ssh host</code> keeps giving you cards, exit codes and durations for remote commands, labelled <code>user@host:path</code>, with the composer driving the remote shell. Nothing is installed or left on the remote machine, and <code>ssh host cmd</code>, tunnels, scp, rsync and git over ssh are untouched. Hosts that already send their own prompt marks get cards with the setting off.</li>
+<li><strong>Images in the terminal.</strong> iTerm2 inline images, Sixel and the kitty graphics protocol, so <code>imgcat</code>, <code>chafa</code>, <code>timg</code>, <code>img2sixel</code>, <code>kitten icat</code> and yazi previews show pictures. Images stay inside their card, survive folding and resizing, and are skipped by find. Per-image and per-session memory limits apply, and kitty can&#x27;t make Cue read arbitrary files.</li>
+<li><strong>Typing is instant again.</strong> With a large shell history every keystroke used to rescan all of it; suggestions and history completions now come from an index and stay under a millisecond per key.</li>
+<li><strong>Slow prompts no longer double a command.</strong> If your prompt takes longer than a few seconds, Cue now waits until the shell is actually idle before sending, instead of giving up after 4 s.</li>
+<li><strong>Intel Macs.</strong> Cue is now a universal app.</li>
+<li><strong>Saved layouts.</strong> File → Save Layout… keeps a window&#x27;s tabs, splits and folders, with an optional startup command per pane, and File → Open Layout (or ⌘K → Layouts, or <code>/layout &lt;name&gt;</code>) brings it back in a new window or adds it to the current one. Rename and delete from the same menu. A project can check in its own <code>cue.layout.json</code> (or <code>.cue/layout.json</code>) with folders relative to its root: ⌘K, the welcome screen and <code>/layout project</code> offer it, and Cue asks before running its commands the first time and again whenever the file changes.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/cue/releases/download/v0.5.0/Cue-0.5.0.dmg" type="application/octet-stream" sparkle:edSignature="w0waNxGc3ySgMb8HgZSIlfJdMnCNGhOMG2/KN9lWR94WH2CYygzFT0lWfsoAcxkIHYTHf8aUgA6OcYMauGXECw==" length="11672103" />
+    </item>
+<item>
       <title>Version 0.4.1</title>
       <pubDate>Sat, 17 Oct 2026 19:59:09 +0300</pubDate>
       <sparkle:version>6</sparkle:version>
