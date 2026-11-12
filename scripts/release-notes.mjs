@@ -41,9 +41,19 @@ function parse(markdown) {
     if (/^#\s/.test(line)) { current = null; continue; }
     if (!current) continue;
     if (/^_(\d{4}-\d{2}-\d{2}|Unreleased)_$/.test(line.trim())) continue;
-    current.lines.push(line.replace(/^(\s*[-*]\s+\*\*.+?\*\*)\s+`[A-Za-z0-9.]+`(?=\s)/, "$1"));
+    current.lines.push(stripTags(line.replace(/^(\s*[-*]\s+\*\*.+?\*\*)\s+`[A-Za-z0-9.]+(?:\+[A-Za-z0-9.]+)?`(?=\s)/, "$1")));
   }
   return releases.map((r) => ({ ...r, blocks: blocks(r.lines) }));
+}
+
+function stripTags(line) {
+  if (!/^\s*[-*]\s/.test(line)) return line;
+  let text = line;
+  for (;;) {
+    const m = text.match(/\s*\{([^{}]*)\}\s*$/);
+    if (!m || !m[1].split(",").every((n) => /^[a-z0-9][a-z0-9-]*$/.test(n.trim()))) return text;
+    text = text.slice(0, m.index);
+  }
 }
 
 function blocks(lines) {
